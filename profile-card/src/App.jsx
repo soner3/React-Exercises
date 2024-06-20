@@ -1,5 +1,11 @@
+import Card from "./Components/Card";
+
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <main className="dark:bg-black dark:text-white h-screen flex justify-center items-center">
+      <Card />
+    </main>
+  );
 }
 
 export default App;
