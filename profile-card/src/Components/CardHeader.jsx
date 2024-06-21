@@ -5,7 +5,7 @@ function CardHeader(props) {
       <img
         src={props.images}
         alt="Profilbild"
-        className="rounded-t-2xl object-cover w-full"
+        className=" object-cover w-full h-full rounded-t-xl"
       />
     </div>
   );
