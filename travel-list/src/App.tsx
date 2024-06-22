@@ -1,5 +1,15 @@
-function App() {
-  return <h1>Hello React</h1>;
-}
+import Form from "./Form";
+import Logo from "./Logo";
+import PackingList from "./PackingList";
+import Stats from "./Stats";
 
-export default App;
+export default function App() {
+  return (
+    <div className="app">
+      <Logo />
+      <Form />
+      <PackingList />
+      <Stats />
+    </div>
+  );
+}
