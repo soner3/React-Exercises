@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DateCounter2 from "./Components/DateCounter2";
 
 function App() {
   const [step, setStep] = useState<number>(1);
@@ -83,6 +84,8 @@ function App() {
           {daysOfWeek[date.getDay()]} {date.toLocaleDateString("en-US", format)}
         </h2>
       </div>
+      <br />
+      <DateCounter2 />
     </main>
   );
 }
