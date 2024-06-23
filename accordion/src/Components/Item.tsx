@@ -1,15 +1,15 @@
-import { useState } from "react";
 import { QuestionTypes } from "./Interfaces";
 
 interface PropTypes {
   faq: QuestionTypes;
+  active: number | null;
+  handleActive: (id: number) => void;
 }
 
-export default function Item({ faq }: PropTypes) {
-  const [isClicked, setIsClicked] = useState(false);
-
-  function handleClick() {
-    setIsClicked(!isClicked);
+export default function Item({ faq, active, handleActive }: PropTypes) {
+  const isClicked = active === faq.id;
+  function handleClick(id: number): void {
+    handleActive(id);
   }
 
   return (
@@ -33,7 +33,12 @@ export default function Item({ faq }: PropTypes) {
         >
           {faq.title}
         </div>
-        <button className="text-2xl" onClick={handleClick}>
+        <button
+          className="text-2xl"
+          onClick={() => {
+            handleClick(faq.id);
+          }}
+        >
           +
         </button>
       </div>
