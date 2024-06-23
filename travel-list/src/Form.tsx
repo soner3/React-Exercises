@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { FormProps, ItemType } from "./interfaces";
 
-export default function Form() {
+export default function Form({ onAddItems }: FormProps) {
   const [description, setDescrpition] = useState<string>("TEST");
   const [quantity, setQuantity] = useState<number>(4);
 
@@ -9,8 +10,13 @@ export default function Form() {
     if (!description) {
       return;
     }
-    const newItem = { description, quantity, packed: false, id: Date.now() };
-    console.log(newItem);
+    const newItem: ItemType = {
+      description,
+      quantity,
+      packed: false,
+      id: Date.now(),
+    };
+    onAddItems(newItem);
     setDescrpition("");
   }
 
