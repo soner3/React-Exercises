@@ -1,2 +1,3 @@
 # React-Exercises
-Excercises to work on React Skills
+
+Every Folder is ONE React Project!!!
