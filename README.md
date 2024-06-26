@@ -1,3 +1,3 @@
 # React-Exercises
 
-Every Folder is ONE React Project!!!
+Every Folder is ONE React Exercise!!!
