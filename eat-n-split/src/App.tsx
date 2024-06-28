@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const initialFriends: FriendTypes[] = [
   {
@@ -76,6 +76,7 @@ export default function App() {
       </div>
       {selectedFriend && (
         <FormSplittBill
+          key={selectedFriend.id}
           selectedFriend={selectedFriend}
           handleSplitBill={handleSplitBill}
         />
