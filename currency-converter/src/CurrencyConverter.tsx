@@ -9,7 +9,7 @@ export default function CurrencyConverter() {
   const [value, setValue] = useState("");
   const [baseCurrency, setBaseCurrency] = useState("USD");
   const [convertCurrency, setConvertCurrency] = useState("USD");
-  //   const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleChangeValue(e: React.ChangeEvent<HTMLInputElement>) {
     setValue(e.target.value);
@@ -26,29 +26,30 @@ export default function CurrencyConverter() {
   useEffect(() => {
     async function changeCurrency() {
       try {
-        if (value === "") {
-          return;
-        }
-        if (baseCurrency === convertCurrency) {
-          setOutput(value);
-          return;
-        }
+        setIsLoading(true);
 
         const res = await fetch(
           `https://api.frankfurter.app/latest?amount=${value}&base=${baseCurrency}`
         );
 
         const data: CurrencyAPIType = await res.json();
-        console.log(data);
-
         setOutput(String(data.rates[convertCurrency]));
+        setIsLoading(false);
       } catch (error) {
         if (error instanceof Error) {
           console.log(error.message);
         }
       } finally {
-        // setIsLoading(false);
+        setIsLoading(false);
       }
+    }
+
+    if (value === "") {
+      return;
+    }
+    if (baseCurrency === convertCurrency) {
+      setOutput(value);
+      return;
     }
 
     changeCurrency();
@@ -66,6 +67,7 @@ export default function CurrencyConverter() {
           className="border-2 border-black rounded-xl p-1 ml-1"
           value={value}
           onChange={handleChangeValue}
+          disabled={isLoading}
         />
       </div>
       <div className="mb-1">
@@ -98,6 +100,7 @@ export default function CurrencyConverter() {
           <option value="INR">INR</option>
         </select>
       </div>
+      {isLoading}
       <p className="text-2xl font-medium">{output}</p>
     </div>
   );
