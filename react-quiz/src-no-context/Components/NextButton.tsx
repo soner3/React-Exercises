@@ -1,8 +1,18 @@
-import { useQuizContext } from "../contexts/QuizContext";
+import { ActionType } from "../App";
 
-export default function NextButton() {
-  const { answer, index, numQuestions, dispatch } = useQuizContext();
+interface NextButtonPropTypes {
+  dispatch: React.Dispatch<ActionType>;
+  answer: number | null;
+  index: number;
+  numQuestions: number;
+}
 
+export default function NextButton({
+  dispatch,
+  answer,
+  index,
+  numQuestions,
+}: NextButtonPropTypes) {
   if (answer === null) {
     return;
   }

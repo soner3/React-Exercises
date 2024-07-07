@@ -1,8 +1,18 @@
-import { useQuizContext } from "../contexts/QuizContext";
+import { ActionType } from "../App";
 
-export default function FinishScreen() {
-  const { points, maxPossiblePoints, highscore, dispatch } = useQuizContext();
+interface FinishScreenPropTypes {
+  points: number;
+  maxPossiblePoints: number;
+  highscore: number;
+  dispatch: React.Dispatch<ActionType>;
+}
 
+export default function FinishScreen({
+  points,
+  maxPossiblePoints,
+  highscore,
+  dispatch,
+}: FinishScreenPropTypes) {
   const percantage = (points / maxPossiblePoints) * 100;
 
   return (

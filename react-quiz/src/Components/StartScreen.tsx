@@ -1,25 +1,8 @@
-interface StartScreenPropTypes {
-  numQuestions: number;
-  dispatch: React.Dispatch<ActionType>;
-}
+import { useQuizContext } from "../contexts/QuizContext";
 
-interface ActionType {
-  type: string;
-  payload?: QuestionType[];
-}
+export default function StartScreen() {
+  const { numQuestions, dispatch } = useQuizContext();
 
-interface QuestionType {
-  id: string;
-  question: string;
-  options: Array<string>;
-  correctOption: number;
-  points: number;
-}
-
-export default function StartScreen({
-  numQuestions,
-  dispatch,
-}: StartScreenPropTypes) {
   return (
     <div className="start">
       <h2>Welcome to the React Quiz</h2>
